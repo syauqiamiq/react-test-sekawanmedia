@@ -2,7 +2,19 @@
 export default {
 	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
 	theme: {
-		extend: {},
+		extend: {
+			fontFamily: {
+				poppins: ["Poppins", "sans-serif"],
+			},
+			textColor: {
+				"sekawan-primary": "#1E7CFE",
+			},
+			backgroundColor: {
+				"sekawan-primary": "#1E7CFE",
+				"sekawan-dark": "#23272F",
+				"sekawan-light": "#FFFFFF",
+			},
+		},
 	},
 	plugins: [],
 };

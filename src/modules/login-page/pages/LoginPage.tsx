@@ -1,6 +1,6 @@
 import LoginCard from "../components/LoginCard";
 
-const HomePage = () => {
+const LoginPage = () => {
 	return (
 		<div className="items-center justify-center flex w-full min-h-screen bg-sekawan-dark">
 			<LoginCard />
@@ -8,4 +8,4 @@ const HomePage = () => {
 	);
 };
 
-export default HomePage;
+export default LoginPage;

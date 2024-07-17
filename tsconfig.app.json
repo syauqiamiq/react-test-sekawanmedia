@@ -8,6 +8,12 @@
 		"module": "ESNext",
 		"skipLibCheck": true,
 
+		"allowJs": true,
+
+		"esModuleInterop": true,
+
+		"incremental": true,
+
 		/* Bundler mode */
 		"moduleResolution": "bundler",
 		"allowImportingTsExtensions": true,
@@ -15,23 +21,14 @@
 		"isolatedModules": true,
 		"moduleDetection": "force",
 		"noEmit": true,
-		"jsx": "react-jsx",
+		"jsx": "preserve",
 
 		/* Linting */
 		"strict": true,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
-		"noFallthroughCasesInSwitch": true,
-
-		"paths": {
-			"@components/*": ["./src/components/*"],
-			"@configs/*": ["./src/configs/*"],
-			"@constants/*": ["./src/constants/*"],
-			"@interfaces/*": ["./src/interfaces/*"],
-			"@libs/*": ["./src/libs/*"],
-			"@stores/*": ["./src/stores/*"],
-			"@modules/*": ["./src/modules/*"]
-		}
+		"noFallthroughCasesInSwitch": true
 	},
-	"include": ["src"]
+	"include": ["src", "**/*.ts"],
+	"exclude": ["node_modules"]
 }

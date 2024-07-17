@@ -1,13 +1,15 @@
-import CustomButton from "@components/button/CustomButton";
-import { FormInput } from "@components/input/hook-form/FormInput";
-import { PasswordInput } from "@components/input/hook-form/PasswordInput";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { Button, Card } from "antd";
+import { Card } from "antd";
 import { useCookies } from "react-cookie";
 
 import { FormProvider, useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import * as yup from "yup";
+import CustomButton from "../../../components/button/CustomButton";
+import { FormInput } from "../../../components/input/hook-form/FormInput";
+import { PasswordInput } from "../../../components/input/hook-form/PasswordInput";
+import { useNavigate } from "react-router-dom";
 
 const defaultValues = {
 	email: "",
@@ -23,8 +25,9 @@ const formSchema = yup
 
 const LoginCard = () => {
 	const [cookies, setCookie] = useCookies();
+	const navigate = useNavigate();
 
-	const { t } = useTranslation(lng, "login-page");
+	const { t } = useTranslation("loginPage");
 	const formMethods = useForm({
 		defaultValues: defaultValues,
 		mode: "onSubmit",
@@ -34,7 +37,7 @@ const LoginCard = () => {
 
 	const onSubmit = (data: any) => {
 		// DO SOME ACTION
-		console.log(data);
+
 		if (data.email == "admin@email.com" && data.password == "admin") {
 			setCookie("role-Cookie", "admin", {
 				path: "/",
@@ -43,9 +46,8 @@ const LoginCard = () => {
 				path: "/",
 			});
 			// SET ROLE ADMIN
-			router.replace(`/${lng}/panel/overview`);
-		}
-		if (data.email == "guest@email.com" && data.password == "guest") {
+			navigate("/overview", { replace: true });
+		} else if (data.email == "guest@email.com" && data.password == "guest") {
 			// SET ROLE GUEST
 			setCookie("role-Cookie", "guest", {
 				path: "/",
@@ -53,12 +55,14 @@ const LoginCard = () => {
 			setCookie("auth-Cookie", true, {
 				domain: "/",
 			});
-			router.replace(`/${lng}/panel/overview`);
+			navigate("/overview", { replace: true });
+		} else {
+			// HANDLE LOGIN ERROR
+			setCookie("auth-Cookie", false, {
+				domain: "/",
+			});
+			navigate("/");
 		}
-		// HANDLE LOGIN ERROR
-		setCookie("auth-Cookie", false, {
-			domain: "/",
-		});
 	};
 	return (
 		<Card className="flex justify-center text-center w-[500px]">
@@ -106,9 +110,9 @@ const LoginCard = () => {
 						<div>
 							<div>
 								<span className="md:text-lg text-base font-poppins text-gray-400">
-									Dont have account?{" "}
+									{t("sign-up-text")}?{" "}
 									<span className="text-sekawan-primary font-semibold">
-										Sign Up
+										{t("sign-up")}
 									</span>
 								</span>
 							</div>
