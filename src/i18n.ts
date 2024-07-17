@@ -2,6 +2,10 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
 import loginPageEn from "./libs/i18n/en/login-page.json";
+import overviewPageEn from "./libs/i18n/en/overview-page.json";
+
+import loginPageId from "./libs/i18n/id/login-page.json";
+import overviewPageId from "./libs/i18n/id/overview-page.json";
 
 // the translations
 // (tip move them in a JSON file and import them,
@@ -9,6 +13,11 @@ import loginPageEn from "./libs/i18n/en/login-page.json";
 const resources = {
 	en: {
 		loginPage: loginPageEn,
+		overviewPage: overviewPageEn,
+	},
+	id: {
+		loginPage: loginPageId,
+		overviewPage: overviewPageId,
 	},
 };
 
@@ -20,7 +29,7 @@ i18n
 		// you can use the i18n.changeLanguage function to change the language manually: https://www.i18next.com/overview/api#changelanguage
 		// if you're using a language detector, do not define the lng option
 
-		ns: ["loginPage"],
+		ns: ["loginPage", "overviewPage"],
 		defaultNS: "common",
 
 		interpolation: {

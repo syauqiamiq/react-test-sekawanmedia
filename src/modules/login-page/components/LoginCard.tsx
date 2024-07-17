@@ -10,7 +10,6 @@ import CustomButton from "../../../components/button/CustomButton";
 import { FormInput } from "../../../components/input/hook-form/FormInput";
 import { PasswordInput } from "../../../components/input/hook-form/PasswordInput";
 import { useNavigate } from "react-router-dom";
-import { useGetPokemonByNameQuery } from "@/libs/apis/endpoints/tes";
 
 const defaultValues = {
 	email: "",
@@ -28,7 +27,6 @@ const LoginCard = () => {
 	const [cookies, setCookie] = useCookies();
 	const navigate = useNavigate();
 
-	const { data, isLoading } = useGetPokemonByNameQuery("");
 	const { t } = useTranslation("loginPage");
 	const formMethods = useForm({
 		defaultValues: defaultValues,
