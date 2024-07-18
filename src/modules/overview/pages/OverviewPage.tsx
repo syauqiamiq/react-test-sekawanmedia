@@ -10,8 +10,11 @@ import UnresolveTicketCard from "../components/UnresolveTicketCard";
 import OverviewTaskCard from "../components/OverviewTaskCard";
 import ReactApexChart from "react-apexcharts";
 import { useTranslation } from "react-i18next";
+import { useAppSelector } from "@/libs/hooks/useAppSelector";
 
 const OverviewPage = () => {
+	const themeMode: any = useAppSelector((state) => state.theme.value);
+
 	// i18n
 	const { t } = useTranslation("overviewPage");
 	// Fetch
@@ -45,10 +48,10 @@ const OverviewPage = () => {
 			</div>
 
 			<div className="grid grid-cols-1 w-full mt-6">
-				<div className="flex w-full min-h-[500px] rounded-lg p-6 bg-white border-2">
+				<div className="flex w-full min-h-[500px] rounded-lg p-6 bg-white dark:bg-sekawan-dark border-2">
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-5 w-full ">
 						<div>
-							<h4 className="font-poppins font-medium text-3xl">
+							<h4 className="font-poppins font-medium text-3xl dark:text-white">
 								{t("today-trend")}
 							</h4>
 							<ReactApexChart
@@ -57,6 +60,7 @@ const OverviewPage = () => {
 								options={{
 									chart: {
 										id: "apexchart-example",
+										foreColor: `${themeMode === "dark" && "white"}`,
 									},
 									xaxis: {
 										categories: [

@@ -11,7 +11,7 @@ const InfoRightSection = ({ title, description }: IInfoRightSection) => {
 			<div className="text-sm md:text-xl text-gray-400 font-poppins">
 				{title}
 			</div>
-			<div className="text-sm md:text-xl font-poppins font-medium mt-2 mb-2">
+			<div className="text-sm md:text-xl font-poppins font-medium mt-2 mb-2 dark:text-white">
 				{description}
 			</div>
 		</div>

@@ -1,4 +1,5 @@
 import { panelMenu } from "@/contstants/panel-menu";
+import { useAppSelector } from "@/libs/hooks/useAppSelector";
 import {
 	BellOutlined,
 	MenuFoldOutlined,
@@ -17,6 +18,7 @@ interface IPanelLayout {
 	children: React.ReactNode;
 }
 const PanelLayout = ({ children, title }: IPanelLayout) => {
+	const themeMode: any = useAppSelector((state) => state.theme.value);
 	const [collapsed, setCollapsed] = useState(false);
 	const {
 		token: { colorBgContainer, borderRadiusLG },
@@ -42,14 +44,14 @@ const PanelLayout = ({ children, title }: IPanelLayout) => {
 				collapsible
 				collapsed={collapsed}
 				width={250}
-				className="!bg-sekawan-dark"
+				className="!bg-sekawan-light dark:!bg-sekawan-dark "
 			>
-				<div className="bg-sekawan-dark w-full h-24 flex justify-center items-center text-center font-poppins font-medium text-lg md:text-2xl text-white">
+				<div className="bg-sekawan-light dark:bg-sekawan-dark w-full h-24 flex justify-center items-center text-center font-poppins font-medium text-lg md:text-2xl dark:text-white">
 					<h5>Dashboard Kit</h5>
 				</div>
 				<Menu
-					className="bg-sekawan-dark text-xs md:text-base font-poppins"
-					theme="dark"
+					className="bg-sekawan-light dark:bg-sekawan-dark text-xs md:text-base font-poppins"
+					theme={themeMode}
 					mode="inline"
 					defaultSelectedKeys={["1"]}
 					selectedKeys={getSelectedMenu(panelMenu)}
@@ -75,36 +77,45 @@ const PanelLayout = ({ children, title }: IPanelLayout) => {
 					})}
 				/>
 			</Sider>
-			<Layout>
+			<Layout className="dark:bg-gray-900">
 				<Header
 					style={{ padding: 0, background: colorBgContainer }}
-					className="h-20 w-full items-center flex justify-between"
+					className="h-20 w-full items-center flex justify-between !bg-sekawan-light dark:!bg-sekawan-dark "
 				>
 					<div className="flex items-center">
 						<Button
 							type="text"
 							icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
 							onClick={() => setCollapsed(!collapsed)}
+							className=" dark:text-white "
 							style={{
 								fontSize: "16px",
 								width: 64,
 								height: 64,
 							}}
 						/>
-						<h2 className="font-poppins font-semibold text-2xl">{title}</h2>
+						<h2 className="font-poppins font-semibold text-2xl dark:text-white ">
+							{title}
+						</h2>
 					</div>
 					<div className="px-10 flex items-center gap-4">
-						<SearchOutlined className="text-xl cursor-pointer" />
+						<SearchOutlined className="text-xl cursor-pointer dark:text-white " />
 						<Badge className="cursor-pointer" size="small" count={10}>
-							<BellOutlined className="text-xl" />
+							<BellOutlined className="text-xl dark:text-white " />
 						</Badge>
 						<div className="flex justify-center items-center border-l-2 px-5 ml-5 gap-5">
-							<div className="font-poppins font-medium text-base">John Doe</div>
-							<Avatar size="large" icon={<UserOutlined />} />
+							<div className="font-poppins font-medium text-base dark:text-white ">
+								John Doe
+							</div>
+							<Avatar
+								size="large"
+								className="dark:bg-sekawan-light dark:text-black"
+								icon={<UserOutlined />}
+							/>
 						</div>
 					</div>
 				</Header>
-				<div className="p-6 m-6 min-h-[100vh]">{children}</div>
+				<div className="p-6 m-6 min-h-[100vh] ">{children}</div>
 			</Layout>
 		</Layout>
 	);

@@ -13,7 +13,7 @@ import {
 	UserOutlined,
 } from "@ant-design/icons";
 import { Avatar } from "antd";
-import { differenceInDays, parseISO } from "date-fns";
+import { differenceInDays } from "date-fns";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -39,10 +39,10 @@ const TicketPage = ({}: ITicketPageProps) => {
 
 	return (
 		<PanelLayout title={t("page-title")}>
-			<CustomPaper className="min-h-[750px] flex-col">
+			<CustomPaper className="min-h-[750px] flex-col dark:bg-sekawan-dark">
 				<div className="grid grid-cols-1 md:grid-cols-2 w-full gap-5 mb-10">
 					<div className="flex justify-start items-center">
-						<h4 className="font-poppins font-medium text-2xl">
+						<h4 className="font-poppins font-medium text-2xl dark:text-white">
 							{t("all-tickets")}
 						</h4>
 					</div>
@@ -68,17 +68,21 @@ const TicketPage = ({}: ITicketPageProps) => {
 						columns={[
 							{
 								key: "ticket-details",
-								title: t("ticket-details"),
+								title: () => {
+									return (
+										<h1 className="dark:text-white">{t("ticket-details")}</h1>
+									);
+								},
 								render: (value: ITicket, _, i) => {
 									return (
-										<div className="flex w-full gap-3  items-center">
+										<div className="flex w-full gap-3  items-center ">
 											<Avatar
 												size="default"
 												className="w-16 h-14"
 												icon={<UserOutlined />}
 											/>
 											<div className="flex w-full flex-col gap-2">
-												<h4 className="font-poppins text-lg font-medium">
+												<h4 className="font-poppins text-lg font-medium dark:text-white">
 													{value.description}
 												</h4>
 												<h5 className="font-poppins text-sm text-gray-300 font-normal">
@@ -96,11 +100,15 @@ const TicketPage = ({}: ITicketPageProps) => {
 							},
 							{
 								key: "customer-name",
-								title: t("customer-name"),
+								title: () => {
+									return (
+										<h1 className="dark:text-white">{t("customer-name")}</h1>
+									);
+								},
 								render: (value: ITicket, _, i) => {
 									return (
 										<div className="flex flex-col w-full gap-2">
-											<h4 className="font-poppins text-lg font-medium">
+											<h4 className="font-poppins text-lg font-medium dark:text-white">
 												{value.creator}
 											</h4>
 											<h5 className="font-poppins text-sm text-gray-300 font-normal">
@@ -115,11 +123,13 @@ const TicketPage = ({}: ITicketPageProps) => {
 							},
 							{
 								key: "due-date",
-								title: t("due-date"),
+								title: () => {
+									return <h1 className="dark:text-white">{t("due-date")}</h1>;
+								},
 								render: (value: ITicket, _, i) => {
 									return (
 										<div className="flex flex-col w-full gap-2">
-											<h4 className="font-poppins text-lg font-medium">
+											<h4 className="font-poppins text-lg font-medium dark:text-white">
 												{dateFormatter(
 													new Date(value.due_date.replace(" ", "")),
 													"MMMM d, y"
@@ -137,16 +147,22 @@ const TicketPage = ({}: ITicketPageProps) => {
 							},
 							{
 								key: "priority",
-								title: t("priority"),
+								title: () => {
+									return <h1 className="dark:text-white">{t("priority")}</h1>;
+								},
 								render: (value: ITicket, _, i) => (
 									<PriorityTag value={value.priority} />
 								),
 							},
 							{
 								key: "action",
-								title: t("action"),
+								title: () => {
+									return <h1 className="dark:text-white">{t("action")}</h1>;
+								},
 								render: (value: ITicket, _, i) => {
-									return <MoreOutlined className="text-2xl cursor-pointer" />;
+									return (
+										<MoreOutlined className="text-2xl cursor-pointer dark:text-white" />
+									);
 								},
 							},
 						]}
