@@ -46,20 +46,20 @@ const LoginCard = () => {
 				path: "/",
 			});
 			// SET ROLE ADMIN
-			navigate("/overview", { replace: true });
+			navigate("/ticket", { replace: true });
 		} else if (data.email == "guest@email.com" && data.password == "guest") {
 			// SET ROLE GUEST
 			setCookie("role-Cookie", "guest", {
 				path: "/",
 			});
 			setCookie("auth-Cookie", true, {
-				domain: "/",
+				path: "/",
 			});
-			navigate("/overview", { replace: true });
+			navigate("/ticket", { replace: true });
 		} else {
 			// HANDLE LOGIN ERROR
 			setCookie("auth-Cookie", false, {
-				domain: "/",
+				path: "/",
 			});
 			navigate("/");
 		}

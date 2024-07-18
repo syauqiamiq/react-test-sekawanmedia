@@ -8,19 +8,43 @@ import AgentPage from "@/modules/agents/pages/AgentPage";
 import SettingPage from "@/modules/settings/pages/SettingPage";
 import SubscriptionPage from "@/modules/subscriptions/pages/SubscriptionPage";
 import ArticlePage from "@/modules/article/pages/ArticlePage";
+import AuthenticationMiddleware from "@/libs/middleware/AuthenticationMiddleware";
+import RoleBasedAuthorizationMiddleware from "@/libs/middleware/RoleBasedAuthorizationMiddleware";
+import UnauthorizedPage from "@/modules/403/pages/UnauthorizedPage";
+import RedirectIfAuthenticatedMiddleware from "@/libs/middleware/RedirectIfAuthenticatedMiddleware";
 
 export const router = createBrowserRouter([
 	{
+		path: "/403",
+		element: <UnauthorizedPage />,
+	},
+	{
 		path: "/",
-		element: <LoginPage />,
+		element: (
+			<RedirectIfAuthenticatedMiddleware>
+				<LoginPage />
+			</RedirectIfAuthenticatedMiddleware>
+		),
 	},
 	{
 		path: "/overview",
-		element: <OverviewPage />,
+		element: (
+			<AuthenticationMiddleware>
+				<RoleBasedAuthorizationMiddleware grantRole={["admin"]}>
+					<OverviewPage />
+				</RoleBasedAuthorizationMiddleware>
+			</AuthenticationMiddleware>
+		),
 	},
 	{
 		path: "/ticket",
-		element: <TicketPage />,
+		element: (
+			<AuthenticationMiddleware>
+				<RoleBasedAuthorizationMiddleware grantRole={["admin", "guest"]}>
+					<TicketPage />
+				</RoleBasedAuthorizationMiddleware>
+			</AuthenticationMiddleware>
+		),
 	},
 	{
 		path: "/ideas",
