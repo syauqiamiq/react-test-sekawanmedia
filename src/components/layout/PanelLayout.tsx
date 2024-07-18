@@ -8,6 +8,7 @@ import {
 } from "@ant-design/icons";
 import { Avatar, Badge, Button, Layout, Menu, theme } from "antd";
 import React, { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 const { Header, Sider, Content } = Layout;
 
 interface IPanelLayout {
@@ -15,10 +16,21 @@ interface IPanelLayout {
 	children: React.ReactNode;
 }
 const PanelLayout = ({ children, title }: IPanelLayout) => {
-	const [collapsed, setCollapsed] = useState(true);
+	const [collapsed, setCollapsed] = useState(false);
 	const {
 		token: { colorBgContainer, borderRadiusLG },
 	} = theme.useToken();
+
+	const navigate = useNavigate();
+	const location = useLocation();
+	const getSelectedMenu = (array: any[]) => {
+		const found = panelMenu.find((v) => {
+			return v.route === location.pathname;
+		});
+
+		return [`${found?.route}`];
+	};
+
 	return (
 		<Layout>
 			<Sider
@@ -38,7 +50,17 @@ const PanelLayout = ({ children, title }: IPanelLayout) => {
 					theme="dark"
 					mode="inline"
 					defaultSelectedKeys={["1"]}
-					items={panelMenu}
+					selectedKeys={getSelectedMenu(panelMenu)}
+					items={panelMenu.map((v, i) => {
+						return {
+							key: v.route,
+							label: v.label,
+							icon: v.icon,
+							onClick: () => {
+								navigate(v.route);
+							},
+						};
+					})}
 				/>
 			</Sider>
 			<Layout>
@@ -65,14 +87,12 @@ const PanelLayout = ({ children, title }: IPanelLayout) => {
 							<BellOutlined className="text-xl" />
 						</Badge>
 						<div className="flex justify-center items-center border-l-2 px-5 ml-5 gap-5">
-							<div className="font-poppins font-medium text-base">
-								Johanes Jason
-							</div>
+							<div className="font-poppins font-medium text-base">John Doe</div>
 							<Avatar size="large" icon={<UserOutlined />} />
 						</div>
 					</div>
 				</Header>
-				<div className="p-6 m-6">{children}</div>
+				<div className="p-6 m-6 min-h-[100vh]">{children}</div>
 			</Layout>
 		</Layout>
 	);

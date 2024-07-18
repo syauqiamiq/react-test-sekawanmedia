@@ -31,7 +31,7 @@ const OverviewTaskCard = ({}: IOverviewTaskCardProps) => {
 						Create new task
 					</div>
 					<div className=" cursor-pointer text-center h-7 items-center flex justify-center font-medium bg-gray-200 p-3  rounded-lg">
-						<PlusOutlined className="font-bold text-base" text-gray-400 />
+						<PlusOutlined className="font-bold text-base text-gray-400" />
 					</div>
 				</div>
 				<div className="flex w-full min-h-[75px] border-b-2 justify-between items-center mb-2">

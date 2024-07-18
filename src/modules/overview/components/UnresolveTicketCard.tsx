@@ -35,8 +35,8 @@ const UnresolveTicketCard = () => {
 				{unresolveTicketFetching || unresolveTicketLoading
 					? [1, 2, 3, 4].map((_, i) => {
 							return (
-								<div className="mb-10">
-									<BasicSkeleton key={i} shape="square" size="large" />
+								<div key={i} className="mb-10">
+									<BasicSkeleton shape="square" size="large" />
 								</div>
 							);
 					  })

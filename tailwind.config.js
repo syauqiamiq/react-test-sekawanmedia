@@ -14,6 +14,9 @@ export default {
 				"sekawan-dark": "#23272F",
 				"sekawan-light": "#FFFFFF",
 			},
+			borderColor: {
+				"sekawan-primary": "#1E7CFE",
+			},
 		},
 	},
 	plugins: [],

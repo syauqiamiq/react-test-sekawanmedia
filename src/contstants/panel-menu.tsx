@@ -1,49 +1,57 @@
 import {
+	FileOutlined,
+	FundProjectionScreenOutlined,
+	ProfileOutlined,
+	ReadOutlined,
+	SaveOutlined,
+	SettingOutlined,
+	SolutionOutlined,
 	UploadOutlined,
 	UserOutlined,
 	VideoCameraOutlined,
 } from "@ant-design/icons";
 import { ItemType, MenuItemType } from "antd/es/menu/interface";
 
-export const panelMenu: ItemType<MenuItemType>[] = [
+export const panelMenu = [
 	{
-		key: "1",
-		icon: <UserOutlined />,
+		icon: <FundProjectionScreenOutlined />,
 		label: "Overview",
+		route: "/overview",
 	},
 	{
-		key: "2",
-		icon: <VideoCameraOutlined />,
+		icon: <FileOutlined />,
 		label: "Tickets",
+		route: "/ticket",
 	},
 	{
 		key: "3",
-		icon: <UploadOutlined />,
+		icon: <ReadOutlined />,
 		label: "Ideas",
+		route: "/ideas",
 	},
 	{
-		key: "4",
-		icon: <UploadOutlined />,
+		icon: <ProfileOutlined />,
 		label: "Contacts",
+		route: "/contacts",
 	},
 	{
-		key: "5",
-		icon: <UploadOutlined />,
+		icon: <UserOutlined />,
 		label: "Agents",
+		route: "/agents",
 	},
 	{
-		key: "6",
-		icon: <UploadOutlined />,
+		icon: <SolutionOutlined />,
 		label: "Article",
+		route: "/article",
 	},
 	{
-		key: "7",
-		icon: <UploadOutlined />,
+		icon: <SettingOutlined />,
 		label: "Settings",
+		route: "/settings",
 	},
 	{
-		key: "8",
-		icon: <UploadOutlined />,
+		icon: <SaveOutlined />,
 		label: "Subscription",
+		route: "/subscription",
 	},
 ];
