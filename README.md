@@ -1,30 +1,53 @@
-# React + TypeScript + Vite
+# Technical Test for Frontend Developer (React) - Sekawan Media
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Author
 
-Currently, two official plugins are available:
+Muhammad Syauqi Amiq Amrullah
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
 
-## Expanding the ESLint configuration
+CSS Framework: Tailwind CSS
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+UI Framework: Ant Design
 
-- Configure the top-level `parserOptions` property like this:
+Programming Language: TypeScript
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+Framework: Vite (React)
+
+## Requirement
+
+Node.js Version: 20.10.0
+
+Yarn Version: 1.22.21
+
+React Version: ^18.3.1
+
+## Live Preview
+
+[See Live Preview on Vercel](https://react-test-sekawanmedia.vercel.app/)
+
+## Installation Guide
+
+clone:
+
+```shell
+git clone https://github.com/syauqiamiq/react-test-sekawanmedia
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+masuk ke directory project:
+
+```shell
+cd react-test-sekawanmedia
+```
+
+install package dengan "yarn":
+
+```shell
+yarn
+```
+
+jalankan development server:
+
+```shell
+yarn dev
+```
