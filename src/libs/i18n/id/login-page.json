@@ -1,6 +1,8 @@
 {
-	"card-title": "Log In to Dashboard Kit",
-	"card-subtitle": "Enter your email and password below",
-	"forget-password": "Forget Password",
-	"btn-login": "Log in"
+	"card-title": "Masuk ke Dashboard Kit",
+	"card-subtitle": "Masukkan email dan kata sandi Anda di bawah ini",
+	"forget-password": "Lupa Password",
+	"btn-login": "Masuk",
+	"sign-up-text": "Tidak mempunyai akun",
+	"sign-up": "Daftar"
 }

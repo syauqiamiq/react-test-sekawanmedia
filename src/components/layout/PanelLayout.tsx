@@ -8,6 +8,7 @@ import {
 } from "@ant-design/icons";
 import { Avatar, Badge, Button, Layout, Menu, theme } from "antd";
 import React, { useState } from "react";
+import { useCookies } from "react-cookie";
 import { useLocation, useNavigate } from "react-router-dom";
 const { Header, Sider, Content } = Layout;
 
@@ -31,6 +32,7 @@ const PanelLayout = ({ children, title }: IPanelLayout) => {
 		return [`${found?.route}`];
 	};
 
+	const [cookies, setCookies] = useCookies(["i18n"]);
 	return (
 		<Layout>
 			<Sider
@@ -52,9 +54,19 @@ const PanelLayout = ({ children, title }: IPanelLayout) => {
 					defaultSelectedKeys={["1"]}
 					selectedKeys={getSelectedMenu(panelMenu)}
 					items={panelMenu.map((v, i) => {
+						if (cookies.i18n == "en") {
+							return {
+								key: v.route,
+								label: v.labelEn,
+								icon: v.icon,
+								onClick: () => {
+									navigate(v.route);
+								},
+							};
+						}
 						return {
 							key: v.route,
-							label: v.label,
+							label: v.labelId,
 							icon: v.icon,
 							onClick: () => {
 								navigate(v.route);

@@ -42,16 +42,22 @@ const TicketPage = ({}: ITicketPageProps) => {
 			<CustomPaper className="min-h-[750px] flex-col">
 				<div className="grid grid-cols-1 md:grid-cols-2 w-full gap-5 mb-10">
 					<div className="flex justify-start items-center">
-						<h4 className="font-poppins font-medium text-2xl">All Tickets</h4>
+						<h4 className="font-poppins font-medium text-2xl">
+							{t("all-tickets")}
+						</h4>
 					</div>
 					<div className="flex gap-5 justify-start md:justify-end items-center">
 						<div className="flex justify-center items-center gap-2 cursor-pointer">
 							<SortDescendingOutlined className="text-gray-400" />
-							<h5 className="font-poppins text-lg text-gray-400">Sort</h5>
+							<h5 className="font-poppins text-lg text-gray-400">
+								{t("sort")}
+							</h5>
 						</div>
 						<div className="flex justify-center items-center gap-2 cursor-pointer">
 							<FilterFilled className="text-gray-400" />
-							<h5 className="font-poppins text-lg text-gray-400">Filter</h5>
+							<h5 className="font-poppins text-lg text-gray-400">
+								{t("filter")}
+							</h5>
 						</div>
 					</div>
 				</div>
@@ -62,7 +68,7 @@ const TicketPage = ({}: ITicketPageProps) => {
 						columns={[
 							{
 								key: "ticket-details",
-								title: "Ticket Details",
+								title: t("ticket-details"),
 								render: (value: ITicket, _, i) => {
 									return (
 										<div className="flex w-full gap-3  items-center">
@@ -76,12 +82,12 @@ const TicketPage = ({}: ITicketPageProps) => {
 													{value.description}
 												</h4>
 												<h5 className="font-poppins text-sm text-gray-300 font-normal">
-													{`Updated ${
+													{`${t("updated")} ${
 														differenceInDays(
 															new Date(value.updated_at.replace(" ", "")),
 															new Date()
 														) * -1
-													} days ago`}
+													} ${t("days-ago")}`}
 												</h5>
 											</div>
 										</div>
@@ -90,7 +96,7 @@ const TicketPage = ({}: ITicketPageProps) => {
 							},
 							{
 								key: "customer-name",
-								title: "Customer Name",
+								title: t("customer-name"),
 								render: (value: ITicket, _, i) => {
 									return (
 										<div className="flex flex-col w-full gap-2">
@@ -98,7 +104,7 @@ const TicketPage = ({}: ITicketPageProps) => {
 												{value.creator}
 											</h4>
 											<h5 className="font-poppins text-sm text-gray-300 font-normal">
-												{`on ${dateFormatter(
+												{`${t("on")} ${dateFormatter(
 													new Date(value.created_at.replace(" ", "")),
 													"d.MMMM.y"
 												)}`}
@@ -109,7 +115,7 @@ const TicketPage = ({}: ITicketPageProps) => {
 							},
 							{
 								key: "due-date",
-								title: "Due Date",
+								title: t("due-date"),
 								render: (value: ITicket, _, i) => {
 									return (
 										<div className="flex flex-col w-full gap-2">
@@ -131,14 +137,14 @@ const TicketPage = ({}: ITicketPageProps) => {
 							},
 							{
 								key: "priority",
-								title: "Priority",
+								title: t("priority"),
 								render: (value: ITicket, _, i) => (
 									<PriorityTag value={value.priority} />
 								),
 							},
 							{
 								key: "action",
-								title: "Action",
+								title: t("action"),
 								render: (value: ITicket, _, i) => {
 									return <MoreOutlined className="text-2xl cursor-pointer" />;
 								},

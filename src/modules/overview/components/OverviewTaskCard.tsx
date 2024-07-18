@@ -28,7 +28,7 @@ const OverviewTaskCard = ({}: IOverviewTaskCardProps) => {
 			<div>
 				<div className="flex w-full min-h-[75px] border-b-2 justify-between items-center mb-2">
 					<div className="text-xs md:text-base font-medium text-gray-400 font-poppins">
-						Create new task
+						{t("create-new-task")}
 					</div>
 					<div className=" cursor-pointer text-center h-7 items-center flex justify-center font-medium bg-gray-200 p-3  rounded-lg">
 						<PlusOutlined className="font-bold text-base text-gray-400" />

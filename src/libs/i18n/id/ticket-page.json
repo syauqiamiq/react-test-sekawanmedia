@@ -1,1 +1,14 @@
-{}
+{
+	"page-title": "Tiket",
+	"all-tickets": "Semua Tiket",
+	"sort": "Sortir",
+	"filter": "Saring",
+	"ticket-details": "Detail Tiket",
+	"customer-name": "Nama Pelanggan",
+	"due-date": "Tenggat Waktu",
+	"priority": "Prioritas",
+	"action": "Aksi",
+	"on": "pada",
+	"updated": "Diubah",
+	"days-ago": "hari yang lalu"
+}

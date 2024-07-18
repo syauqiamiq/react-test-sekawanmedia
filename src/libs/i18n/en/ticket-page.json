@@ -1,3 +1,14 @@
 {
-	"page-title": "Ticket"
+	"page-title": "Ticket",
+	"all-tickets": "All Tickets",
+	"sort": "Sort",
+	"filter": "Filter",
+	"ticket-details": "Ticket Details",
+	"customer-name": "Customer Name",
+	"due-date": "Due Date",
+	"priority": "Priority",
+	"action": "Action",
+	"on": "on",
+	"updated": "Updated",
+	"days-ago": "days ago"
 }

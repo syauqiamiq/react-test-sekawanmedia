@@ -67,7 +67,7 @@ const LoginCard = () => {
 	return (
 		<Card className="flex justify-center text-center w-[500px]">
 			<h1 className="mb-12">LOGO</h1>
-			<h3 className="mb-5 font-poppins md:text-4xl text-xl font-bold">
+			<h3 className="mb-5 font-poppins md:text-2xl text-xl font-bold">
 				{t("card-title")}
 			</h3>
 			<h4 className="mb-8 font-poppins md:text-base text-xs text-gray-400 font-medium">
