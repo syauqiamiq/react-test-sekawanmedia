@@ -68,6 +68,7 @@ const TicketPage = ({}: ITicketPageProps) => {
 						columns={[
 							{
 								key: "ticket-details",
+
 								title: () => {
 									return (
 										<h1 className="dark:text-white">{t("ticket-details")}</h1>

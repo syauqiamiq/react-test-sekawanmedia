@@ -41,6 +41,7 @@ const BaseTable = ({
 					}}
 				>
 					<Table
+						scroll={{ x: "max-content" }}
 						columns={columns}
 						dataSource={dataSource}
 						loading={loading}

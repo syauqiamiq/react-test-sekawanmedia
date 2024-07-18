@@ -7,9 +7,9 @@ import {
 	SearchOutlined,
 	UserOutlined,
 } from "@ant-design/icons";
-import { Avatar, Badge, Button, Layout, Menu, theme } from "antd";
+import { Avatar, Badge, Button, Dropdown, Layout, Menu, theme } from "antd";
 import React, { useState } from "react";
-import { useCookies } from "react-cookie";
+import { Cookies, useCookies } from "react-cookie";
 import { useLocation, useNavigate } from "react-router-dom";
 const { Header, Sider, Content } = Layout;
 
@@ -17,6 +17,7 @@ interface IPanelLayout {
 	title: string;
 	children: React.ReactNode;
 }
+
 const PanelLayout = ({ children, title }: IPanelLayout) => {
 	const themeMode: any = useAppSelector((state) => state.theme.value);
 	const [collapsed, setCollapsed] = useState(false);
@@ -34,15 +35,22 @@ const PanelLayout = ({ children, title }: IPanelLayout) => {
 		return [`${found?.route}`];
 	};
 
-	const [cookies, setCookies] = useCookies(["i18n"]);
+	const [cookies, setCookie] = useCookies(["i18n", "role-Cookie"]);
+	const instanceCookie = new Cookies();
+
 	return (
 		<Layout>
 			<Sider
-				breakpoint="md"
+				breakpoint="lg"
 				collapsedWidth="0"
 				trigger={null}
 				collapsible
 				collapsed={collapsed}
+				onBreakpoint={(broken) => {
+					if (broken) {
+						setCollapsed(true);
+					}
+				}}
 				width={250}
 				className="!bg-sekawan-light dark:!bg-sekawan-dark "
 			>
@@ -55,26 +63,28 @@ const PanelLayout = ({ children, title }: IPanelLayout) => {
 					mode="inline"
 					defaultSelectedKeys={["1"]}
 					selectedKeys={getSelectedMenu(panelMenu)}
-					items={panelMenu.map((v, i) => {
-						if (cookies.i18n == "en") {
+					items={panelMenu
+						.filter((v) => v.role.includes(cookies["role-Cookie"]))
+						.map((v, i) => {
+							if (cookies.i18n == "en") {
+								return {
+									key: v.route,
+									label: v.labelEn,
+									icon: v.icon,
+									onClick: () => {
+										navigate(v.route);
+									},
+								};
+							}
 							return {
 								key: v.route,
-								label: v.labelEn,
+								label: v.labelId,
 								icon: v.icon,
 								onClick: () => {
 									navigate(v.route);
 								},
 							};
-						}
-						return {
-							key: v.route,
-							label: v.labelId,
-							icon: v.icon,
-							onClick: () => {
-								navigate(v.route);
-							},
-						};
-					})}
+						})}
 				/>
 			</Sider>
 			<Layout className="dark:bg-gray-900">
@@ -107,11 +117,34 @@ const PanelLayout = ({ children, title }: IPanelLayout) => {
 							<div className="font-poppins font-medium text-base dark:text-white ">
 								John Doe
 							</div>
-							<Avatar
-								size="large"
-								className="dark:bg-sekawan-light dark:text-black"
-								icon={<UserOutlined />}
-							/>
+							<Dropdown
+								className="cursor-pointer"
+								menu={{
+									items: [
+										{
+											key: "1",
+
+											label: (
+												<span
+													onClick={() => {
+														instanceCookie.remove("auth-Cookie");
+														instanceCookie.remove("role-Cookie");
+													}}
+													className="cursor-pointer font-poppins font-normal text-base"
+												>
+													Logout
+												</span>
+											),
+										},
+									],
+								}}
+							>
+								<Avatar
+									size="large"
+									className="dark:bg-sekawan-light dark:text-black"
+									icon={<UserOutlined />}
+								/>
+							</Dropdown>
 						</div>
 					</div>
 				</Header>
