@@ -7,7 +7,7 @@ interface ICustomPaperProps {
 
 const CustomPaper = ({ children, className }: ICustomPaperProps) => {
 	return (
-		<div className="grid grid-cols-1 w-full mt-6">
+		<div className="grid grid-cols-1 w-full">
 			<div
 				className={`flex w-full  rounded-lg p-6 bg-white border-2 ${className}`}
 			>
