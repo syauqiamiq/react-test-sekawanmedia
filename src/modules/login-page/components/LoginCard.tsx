@@ -79,7 +79,7 @@ const LoginCard = () => {
 					<div className="flex flex-col gap-10">
 						<div className="flex flex-col ">
 							<div className="flex justify-between mb-1">
-								<h5 className="text-gray-400 md:text-base text-sm font-poppins">
+								<h5 className="text-gray-400 md:text-base text-sm font-poppins dark:text-white">
 									Email
 								</h5>
 							</div>
@@ -87,10 +87,12 @@ const LoginCard = () => {
 						</div>
 						<div className="flex flex-col ">
 							<div className="flex justify-between mb-1">
-								<h5 className="text-gray-400 md:text-base text-sm font-poppins">
+								<h5 className="text-gray-400 md:text-base text-sm font-poppins dark:text-white">
 									Password
 								</h5>
-								{t("forget-password")}
+								<h5 className="text-gray-400 md:text-base text-sm font-poppins dark:text-white cursor-pointer">
+									{t("forget-password")}
+								</h5>
 							</div>
 							<PasswordInput
 								name="password"
